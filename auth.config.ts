@@ -4,7 +4,6 @@ import github from "next-auth/providers/github"
 import google from "next-auth/providers/google"
 
 import bcrypt from "bcryptjs";
-import * as z from "zod";
 import { LoginSchema } from "./schemas";
 import { getUserByEmail } from "./data/user";
  

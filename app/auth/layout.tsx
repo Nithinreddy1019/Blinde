@@ -10,7 +10,9 @@ const AuthLayout = ({
     return(
         <div>
             <NavBar />
-            {children}
+            <div className='min-h-screen flex items-center justify-center'>
+                {children}
+            </div>
         </div>
     )
 }
