@@ -5,7 +5,7 @@ import { RegisterSchema } from "@/schemas";
 
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useTransition } from "react";
+import { useState, useTransition } from "react";
 import { useForm } from "react-hook-form";
 import { 
     Form,
@@ -17,11 +17,15 @@ import {
 } from "../ui/form";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
+import { FormError } from "../form-error";
+import { FormSuccess } from "../form-success";
 
 export const RegisterForm = () => {
 
 
     const [isPending, startTransition] = useTransition();
+    const [error, setError] = useState<string | undefined>("");
+    const [success, setSuccess] = useState<string | undefined>("");
 
     const form = useForm<z.infer<typeof RegisterSchema>>({
         resolver: zodResolver(RegisterSchema),
@@ -51,7 +55,7 @@ export const RegisterForm = () => {
             <Form {...form}>
                 <form
                     onSubmit={form.handleSubmit(onSubmit)}
-                    className="space-y-8"
+                    className="space-y-6"
                 >
                     <FormField 
                         control={form.control}
@@ -115,6 +119,9 @@ export const RegisterForm = () => {
                             </FormItem>
                         )}
                     />
+
+                    <FormError message={error}/>
+                    <FormSuccess message={success}/>
 
                     <Button
                         disabled={isPending}

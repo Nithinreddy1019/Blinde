@@ -12,16 +12,21 @@ import {
 
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useTransition } from "react";
+import { useState, useTransition } from "react";
 import { useForm } from "react-hook-form";
 import { LoginSchema } from "@/schemas";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
+import { FormError } from "../form-error";
+import { FormSuccess } from "../form-success";
 
 
 export const LoginForm = () => {
 
     const [isPending, startTransition] = useTransition();
+    const [error, setError] = useState<string | undefined>("");
+    const [success, setSuccess] = useState<string | undefined>("");
+
 
     const form = useForm<z.infer<typeof LoginSchema>>({
         resolver: zodResolver(LoginSchema),
@@ -49,7 +54,7 @@ export const LoginForm = () => {
             <Form {...form}>
                 <form
                     onSubmit={form.handleSubmit(onSubmit)}
-                    className="space-y-8"
+                    className="space-y-6"
                 >
                     <FormField 
                         control={form.control}
@@ -92,6 +97,9 @@ export const LoginForm = () => {
                             </FormItem>
                         )}
                     />
+
+                <FormError message={error}/>
+                <FormSuccess message={success}/>
 
                 <Button
                     disabled={isPending}

@@ -41,7 +41,7 @@ export const CardWrapper = ({
 }: cardWrapperProps) => {
     return (
         <Card
-            className="w-96 md:max-w-[450px] md:min-w-96 h-fit border-[1px]"
+            className="w-96 md:w-2/5 md:min-w-96 h-fit border-[1px]"
         >
             <CardHeader>
                 <div 
