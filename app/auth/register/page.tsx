@@ -3,9 +3,7 @@ import React from "react";
 
 const RegisterPage = () => {
     return (
-        <div className="flex h-screen">
             <RegisterForm />
-        </div>
         
     )
 }

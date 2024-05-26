@@ -40,7 +40,7 @@ export const LoginForm = () => {
     return (
         <CardWrapper
             headerLabel="signin"
-            subHeaderLabel="to continue to blinde"
+            subHeaderLabel="to continue to Blinde"
             backButtonLabel="Don't have an account?"
             backButtonLinkLabel="Sign up"
             backButtonHref="/auth/register"
@@ -67,6 +67,7 @@ export const LoginForm = () => {
                                         placeholder="JohnDoe@gmail.com"
                                     />
                                 </FormControl>
+                                <FormMessage />
                             </FormItem>
                         )}
                     />
@@ -87,6 +88,7 @@ export const LoginForm = () => {
                                         placeholder="******"
                                     />
                                 </FormControl>
+                                <FormMessage />
                             </FormItem>
                         )}
                     />
